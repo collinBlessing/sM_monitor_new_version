@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyOutlinedBoxDropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <!-- Change the color of the box stroke -->
+        <item name="boxStrokeColor">#009688</item>
+        <!-- Other style attributes you want to customize -->
+    </style>
+</resources>

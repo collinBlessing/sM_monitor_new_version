@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
     private boolean isTimerRunning = false;
     private final long totalTimeInMillis = 5 * 60 * 1000; // 5 minutes
     private long timeLeftInMillis = totalTimeInMillis;
+    private boolean halfwayNotificationSent = false; // Flag to track whether the halfway notification has been sent
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -111,8 +112,9 @@ public class HomeFragment extends Fragment {
                 updateUI();
 
                 // Check if the time is halfway (adjust as needed)
-                if (millisUntilFinished <= totalTimeInMillis / 2) {
+                if (millisUntilFinished <= totalTimeInMillis / 2 && !halfwayNotificationSent) {
                     sendNotification("Take a Break", "You've reached halfway! Take a break from social media.");
+                    halfwayNotificationSent = true; // Set the flag to true to prevent repeated notifications
                 }
             }
 
@@ -170,7 +172,7 @@ public class HomeFragment extends Fragment {
         notificationManager.notify(1, builder.build());
     }
 
-        @Override
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
